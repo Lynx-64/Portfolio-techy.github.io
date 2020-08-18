@@ -1,0 +1,286 @@
+/* VARIABLES & MIXINS */
+$color-primary-purple-light: #776af1;
+$color-primary-purple-dark: #4f3a83;
+$color-primary-pink: #c441f1;
+$color-primary-pink-light: lighten($color-primary-pink, 15%);
+$color-primary-aqua-light: #11ffbd;
+//color-primary-aqua-medium: darken($color-primary-aqua-light, 25%);
+//$color-primary-aqua-dark: #1e8495;
+$color-primary-blue-light: #1fb4e2;
+$color-primary-blue-light2: #27afc4;
+$color-primary-dark-green: #18320b;
+$color-primary-gray-medium: #c5cee9;
+
+// #27afc4 #ff834f #ff6347 #7fffda #ECA42E;
+
+$color-bw-01: #fff;
+$color-bw-06: #fefefe;
+$color-bw-02: #c0c0c0;
+$color-bw-03: #5b5b5b;
+$color-bw-04: #3f3e3e;
+$color-bw-05: #252831;
+
+@mixin box-shadow-default {
+  box-shadow: 2px 2px 0.3rem rgba($color-bw-05, 0.2);
+}
+
+@mixin linear-gradient-text($direction, $color1, $color2) {
+  background-image: linear-gradient($direction, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin font-link-default {
+  color: $color-primary-blue-light;
+  text-decoration: none;
+}
+
+@mixin font-link-hover {
+  color: darken($color-primary-blue-light, 20%);
+  background-color: $color-bw-02;
+}
+
+$main-font: "Raleway", sans-serif;
+
+/*GENERAL*/
+
+body,
+html {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background-image: linear-gradient(
+    to bottom,
+    lighten($color-primary-purple-light, 20%),
+    darken($color-primary-purple-light, 20%)
+  );
+  font-family: $main-font;
+}
+
+.header,
+.main-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 110rem;
+}
+
+/* FONTS */
+
+.header__title {
+  color: $color-bw-01;
+  letter-spacing: 0.5rem;
+  text-shadow: 0.3rem 0.5rem 1rem $color-primary-purple-dark;
+  text-transform: uppercase;
+}
+
+.heading-secondary {
+  background-image: linear-gradient(
+    to right,
+    darken($color-primary-purple-light, 10%),
+    $color-primary-blue-light
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  //color: darken($color-primary-purple-light, 5%);
+  display: block;
+  letter-spacing: 0.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:after {
+    border-bottom: 3px double darken($color-primary-purple-light, 5%);
+    content: "";
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+}
+
+.heading--tertiary {
+  color: $color-primary-pink-light;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-strong {
+  color: $color-primary-blue-light;
+  font-weight: bold;
+}
+
+/* HEADER AREA */
+
+.header {
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../img/hero2.jpeg");
+  background: -o-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../img/hero2.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../img/hero2.jpeg");
+  background-size: cover;
+  background-position: top;
+  border: 1px solid $color-bw-03;
+  border-radius: 0 0 0.5rem 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 95vh;
+}
+
+.header__body {
+  box-sizing: border-box;
+  color: $color-bw-01;
+  color: rgba(256, 256, 256, 0.8);
+  letter-spacing: 2px;
+  padding: 0.5rem 1.5rem 1.5rem;
+  text-align: center;
+  width: 100%;
+
+  &--avatar {
+    border: 2px solid $color-bw-04;
+    border-radius: 40%;
+  }
+}
+
+.header .text-strong {
+  text-transform: uppercase;
+}
+/*<!-- This PortFolio Template MADE BY Shubham MAli --> */
+/*NAVIGATION BAR*/
+
+.nav {
+  background: linear-gradient(
+    to right,
+    $color-bw-04,
+    $color-bw-05,
+    $color-bw-04
+  );
+
+  &__item {
+    display: inline-block;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    &--link,
+    &--link:visited {
+      @include font-link-default;
+    }
+    &--link:hover {
+      @include font-link-hover;
+    }
+  }
+}
+
+/*WORKS SECTION*/
+
+.works {
+  background-color: $color-bw-06;
+  margin: 5rem auto;
+
+  &__item {
+    background-color: rgba($color-primary-gray-medium, 0.3);
+    border: 1px solid $color-bw-02;
+    border-radius: 0.5rem;
+    @include box-shadow-default;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    &__textbox--h3 {
+      color: $color-primary-pink-light;
+      font-weight: 200;
+      margin-top: 0;
+    }
+    &__textbox {
+      background: linear-gradient(
+        to top,
+        $color-primary-dark-green,
+        $color-bw-05
+      );
+      clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%);
+      -webkit-clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%);
+      color: $color-primary-gray-medium;
+      margin: 0;
+      opacity: 0.95;
+      padding: 2rem 0 5rem;
+      width: 100%;
+
+      p {
+        padding: 0.4rem;
+      }
+    }
+    &--img {
+      border-radius: 0.5rem;
+      @include box-shadow-default;
+    }
+
+    &--more-btn,
+    &--more-btn:visited {
+      border-radius: 5px;
+      display: inline-block;
+      @include font-link-default;
+      padding: 0.2rem;
+      text-decoration: none;
+    }
+    &--more-btn:hover {
+      @include font-link-hover;
+    }
+  }
+}
+/*<!-- This PortFolio Template MADE BY Shubham MAli --> */
+/* FOOTER */
+.footer__container {
+  background-color: $color-bw-04;
+  color: $color-bw-01;
+  margin-top: 0;
+  padding-top: 0.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.footer__about {
+  background-color: $color-bw-05;
+  color: $color-bw-01;
+}
+
+.google-banner {
+  display: block;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 15rem;
+}
+
+/* CONTACTS BUTTONS */
+
+.contacts__list--item--link {
+  background-color: $color-primary-blue-light2;
+  border: 1px double $color-bw-01;
+  border-radius: 50%;
+  color: $color-bw-01;
+  display: inline-block;
+  font-size: 1.8rem;
+  line-height: 2em;
+  margin: 1.5rem;
+  padding: 1rem;
+  position: relative;
+  text-decoration: none;
+  height: 3.5rem;
+  width: 3.5rem;
+
+  &:visited {
+    color: $color-bw-01;
+  }
+  &:hover {
+    background-color: darken($color-primary-blue-light2, 18%);
+    cursor: pointer;
+  }
+}
+/*<!-- This PortFolio Template MADE BY Shubham MAli --> */
